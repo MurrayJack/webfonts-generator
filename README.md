@@ -1,4 +1,11 @@
-# webfonts-generator
+# webfonts-generator-less
+
+
+Hello i have forked https://www.npmjs.com/package/webfonts-generator and added an output for less vars
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 
 [![Build Status](https://travis-ci.org/sunflowerdeath/webfonts-generator.svg?branch=master)](https://travis-ci.org/sunflowerdeath/webfonts-generator)
