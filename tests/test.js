@@ -208,8 +208,8 @@ describe('webfont', function() {
 			var DEST_CSS = path.join(DEST, FONT_NAME + '.scss')
 			var DEST_CSS_2 = path.join(DEST, FONT_NAME_2 + '.scss')
 
-			var DEST_LESS = path.join(DEST, FONT_NAME + '.scss')
-			var DEST_LESS_2 = path.join(DEST, FONT_NAME_2 + '.scss')
+			var DEST_LESS = path.join(DEST, FONT_NAME + '.less')
+			var DEST_LESS_2 = path.join(DEST, FONT_NAME_2 + '.less')
 
 			var options1 = _.extend({}, OPTIONS, {
 				cssTemplate: webfontsGenerator.templates.scss,
