@@ -1,6 +1,6 @@
 {
   "name": "webfonts-generator-less",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generator of webfonts from svg icons and create LESS vars",
   "main": "src/index.js",
   "directories": {
