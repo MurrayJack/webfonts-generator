@@ -1,7 +1,7 @@
 {
-  "name": "webfonts-generator",
-  "version": "0.4.0",
-  "description": "Generator of webfonts from svg icons",
+  "name": "webfonts-generator-less",
+  "version": "0.0.1",
+  "description": "Generator of webfonts from svg icons and create LESS vars",
   "main": "src/index.js",
   "directories": {
     "test": "tests"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sunflowerdeath/webfonts-generator.git"
+    "url": "https://github.com/MurrayJack/webfonts-generator.git"
   },
   "keywords": [
     "font",
@@ -19,12 +19,13 @@
     "svg",
     "ttf",
     "woff",
-    "woff2"
+    "woff2",
+    "LESS"
   ],
-  "author": "sunflowerdeath",
+  "author": "mdj",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/sunflowerdeath/webfonts-generator/issues"
+    "url": "https://github.com/MurrayJack/webfonts-generator/issues"
   },
   "dependencies": {
     "handlebars": "^4.0.5",

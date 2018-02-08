@@ -6,6 +6,7 @@ var _ = require('underscore')
 var generateFonts = require('./generateFonts')
 var renderCss = require('./renderCss')
 var renderHtml = require('./renderHtml')
+var renderLess = require('./renderLess')
 
 var TEMPLATES_DIR = path.join(__dirname, '..', 'templates')
 var TEMPLATES = {
@@ -23,6 +24,7 @@ var DEFAULT_OPTIONS = {
 	writeFiles: true,
 	fontName: 'iconfont',
 	css: true,
+	less: true,
 	cssTemplate: TEMPLATES.css,
 	html: false,
 	htmlTemplate: TEMPLATES.html,
@@ -61,6 +63,9 @@ var webfont = function(options, done) {
 	}
 	if (options.htmlDest === undefined) {
 		options.htmlDest = path.join(options.dest, options.fontName + '.html')
+	}
+	if (options.lessDest === undefined) {
+		options.lessDest = path.join(options.dest, options.fontName + '.less')
 	}
 
 	// Warn about using deprecated template options.
@@ -124,6 +129,10 @@ function writeResult(fonts, options) {
 	if (options.html) {
 		var html = renderHtml(options)
 		writeFile(html, options.htmlDest)
+	}
+	if (options.less) {
+		var less = renderLess(options)
+		writeFile(less, options.lessDest)
 	}
 }
 

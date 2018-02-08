@@ -59,6 +59,10 @@ describe('webfont', function() {
 			assert(fs.existsSync(cssFile), 'CSS file exists')
 			assert(fs.statSync(cssFile).size > 0, 'CSS file is not empty')
 
+			var lessFile = path.join(DEST, FONT_NAME + '.less')
+			assert(fs.existsSync(lessFile), 'LESS file exists')
+			assert(fs.statSync(lessFile).size > 0, 'LESS file is not empty')
+
 			var htmlFile = path.join(DEST, FONT_NAME + '.html')
 			assert(!fs.existsSync(htmlFile), 'HTML file does not exists by default')
 
@@ -181,9 +185,12 @@ describe('webfont', function() {
 
 		it('creates mixins that can be used to create icons styles', function(done) {
 			var DEST_CSS = path.join(DEST, FONT_NAME + '.scss')
+			var DEST_LESS = path.join(DEST, FONT_NAME + '.less')
+
 			var options = _.extend({}, OPTIONS, {
 				cssTemplate: webfontsGenerator.templates.scss,
-				cssDest: DEST_CSS
+				cssDest: DEST_CSS,
+				lessDest: DEST_LESS,
 			})
 			webfontsGenerator(options, function(err) {
 				if (err) return done(new Error(err))
@@ -201,15 +208,20 @@ describe('webfont', function() {
 			var DEST_CSS = path.join(DEST, FONT_NAME + '.scss')
 			var DEST_CSS_2 = path.join(DEST, FONT_NAME_2 + '.scss')
 
+			var DEST_LESS = path.join(DEST, FONT_NAME + '.scss')
+			var DEST_LESS_2 = path.join(DEST, FONT_NAME_2 + '.scss')
+
 			var options1 = _.extend({}, OPTIONS, {
 				cssTemplate: webfontsGenerator.templates.scss,
 				cssDest: DEST_CSS,
+				lessDest: DEST_LESS,
 				files: [path.join(SRC, 'close.svg')]
 			})
 			var options2 = _.extend({}, OPTIONS, {
 				fontName: FONT_NAME_2,
 				cssTemplate: webfontsGenerator.templates.scss,
 				cssDest: DEST_CSS_2,
+				lessDest: DEST_LESS_2,
 				files: [path.join(SRC, 'back.svg')]
 			})
 
