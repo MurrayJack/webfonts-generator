@@ -67,7 +67,7 @@ var webfont = function(options, done) {
 	if (options.lessDest === undefined) {
 		options.lessDest = path.join(options.dest, options.fontName + '.less')
 	}
-
+	
 	// Warn about using deprecated template options.
 	for(var key in options.templateOptions) {
 		var value = options.templateOptions[key];
@@ -134,6 +134,24 @@ function writeResult(fonts, options) {
 		var less = renderLess(options)
 		writeFile(less, options.lessDest)
 	}
+	if (options.plugInFunc) {
+		options.plugInFunc.map(function (item) {
+			var result = item(options, makeCTX(options))
+			var file = path.join(options.dest, result.fileName)
+			writeFile(result.data, file);
+		});
+	}
+}
+
+function makeCTX(options) {
+	var codepoints = _.object(_.map(options.codepoints, function(codepoint, name) {
+		return [name, codepoint.toString(16)]
+	}))
+
+	return _.extend({
+		fontName: options.fontName,
+		codepoints: codepoints
+	}, options.templateOptions)
 }
 
 webfont.templates = TEMPLATES

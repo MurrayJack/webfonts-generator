@@ -203,6 +203,27 @@ describe('webfont', function() {
 			})
 		})
 
+		it('pass in function works', function() {
+			var DEST_CSS = path.join(DEST, FONT_NAME + '.scss')
+			var DEST_LESS = path.join(DEST, FONT_NAME + '.less')
+			
+			var options = _.extend({}, OPTIONS, {
+				cssDest: DEST_CSS,
+				lessDest: DEST_LESS,
+				plugInFunc: function() {
+					return {
+						fileName: 'murray.cs', 
+						data: 'asdsadsad'
+					}
+				}				
+			})
+
+			webfontsGenerator(options, function(err) {
+				if (err) return done(new Error(err))
+			})
+		})
+
+
 		it('multiple scss mixins can be used together', function() {
 			var FONT_NAME_2 = FONT_NAME + '2'
 			var DEST_CSS = path.join(DEST, FONT_NAME + '.scss')
